@@ -1,9 +1,10 @@
 import express from 'express';
+import cors from 'cors'
 import router from './routes/indexRouter.js';
 const server = express()
 
 server.use(express.json());
-app.use(cors())
+server.use(cors())
 
 server.get('/', (req, res, next) => {
   res.send('Hi there! The url is /api')
