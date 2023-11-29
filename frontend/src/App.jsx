@@ -2,7 +2,7 @@ import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './layouts/Layout'
 import Home from './pages/Home'
-import ItemDetail from './pages/ItemDetail'
+import Detail from './pages/Detail'
 // import Contact from './pages/Contact'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     { path: '/', element: <Layout />,
       children: [
         { path: '/', element: <Home /> },
-        { path: '/products/:id', element: <ItemDetail /> },
+        { path: '/products/:id', element: <Detail /> },
       ]
     }
   ])
