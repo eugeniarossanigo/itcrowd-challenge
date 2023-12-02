@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:wght@400;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,8 +8,21 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'montserrat', sans-serif;
 }
 #root {
   min-height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main-header {
+  min-height: 20vh;
+}
+#main-container {
+  min-height: 75vh;
+}
+#main-footer {
+  height: 5vh;
 }
