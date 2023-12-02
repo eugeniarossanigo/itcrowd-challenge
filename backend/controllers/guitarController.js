@@ -1,5 +1,6 @@
 // const noteModel = require('../models/noteModel');
 import Guitar from  '../models/guitarModel.js'
+import { Sequelize } from 'sequelize';
 
 const guitarController = {
   create: async(req, res) => {
@@ -19,7 +20,8 @@ const guitarController = {
   },
   getAll: async(req, res) => {
     try {
-      const guitars = await Guitar.findAll()      
+      const regexPattern = '^' + req.query.name
+      const guitars = await Guitar.findAll()
       res.status(200).json({
         message: 'all guitars',
         success: true,
