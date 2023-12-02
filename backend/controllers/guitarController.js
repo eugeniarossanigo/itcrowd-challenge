@@ -21,7 +21,13 @@ const guitarController = {
   getAll: async(req, res) => {
     try {
       const regexPattern = '^' + req.query.name
-      const guitars = await Guitar.findAll()
+      const guitars = await Guitar.findAll({
+        where: {
+          name: {
+            [Sequelize.Op.regexp]: regexPattern.trim()
+          }
+        }
+      })
       res.status(200).json({
         message: 'all guitars',
         success: true,

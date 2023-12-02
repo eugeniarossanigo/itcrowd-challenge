@@ -18,7 +18,11 @@ const Guitar = db.define('guitar', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  image: {
+  image1: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  image2: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -27,7 +31,7 @@ const Guitar = db.define('guitar', {
     allowNull: false
   },
   stock: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.FLOAT,
     allowNull: false
   },
   description: {

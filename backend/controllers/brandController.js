@@ -19,7 +19,6 @@ const brandController = {
   getAll: async(req, res) => {
     try {
       const brands = await Brand.findAll()
-      console.log(brands)
       res.status(200).json({
         message: 'all brands',
         success: true,
