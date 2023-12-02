@@ -1,8 +1,18 @@
 import { Link as LinkRouter } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa';
 import { RiUserAddLine, RiUserFollowLine, RiUserLine } from 'react-icons/ri';
+import { useContext } from 'react';
+import { GuitarContext } from '../context/GuitarContext';
 
 export default function Header() {
+  const { input, updateInput } = useContext(GuitarContext)
+
+  const handleInput = (e) => {
+    const query = e.target.value
+    console.log(query)
+    updateInput(query);
+  }
+
   return (
     <header id='main-header' className='w-full flex flex-col items-center shadow-[0_20px_40px_-20px_rgba(166,171,177,1)]'>
       <section className='w-full h-[4vh] tracking-wider bg-moss-green text-center text-[.6rem] text-white font-semibold pt-3'>
@@ -20,7 +30,7 @@ export default function Header() {
         <section className='flex items-center gap-4'>
           <div className='flex gap-1'>
             <label>
-              <input type='search' className='input-search w-[180px] text-xs bg-light-gray shadow-lg rounded-md focus:outline-none focus:bg-white p-2' placeholder='Type to search...'/>
+              <input type='search' className='input-search w-[180px] text-xs bg-light-gray shadow-lg rounded-md focus:outline-none focus:bg-white p-2' placeholder='Type to search...' onChange={handleInput}/>
             </label>
             <button><FaSearch className='text-taupe-gray text-lg' /></button>
           </div>
