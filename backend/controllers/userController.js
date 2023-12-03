@@ -101,11 +101,18 @@ const userController = {
   getAll: async(req, res) => {
     try {
       const users = await User.findAll()
-      res.status(200).json({
-        message: 'all users',
-        success: true,
-        response: users
-      })
+      if (users.length) {
+        res.status(200).json({
+          message: 'all users',
+          success: true,
+          response: users
+        })
+      } else {
+        res.status(404).json({
+          message: 'could not find any users',
+          success: false
+        })
+      }
     } catch (err) {
       res.status(500).json({
         message: err.message,
@@ -116,11 +123,18 @@ const userController = {
   getOne: async(req, res) => {
     try {
       const user = await User.findByPk(req.params.id)
-      res.status(200).json({
-        message: 'get one user',
-        success: true,
-        response: user
-      })
+      if (user) {
+        res.status(200).json({
+          message: 'get one user',
+          success: true,
+          response: user
+        })
+      } else {
+        res.status(404).json({
+          message: 'could not find that user',
+          success: false
+        })
+      }
     } catch (err) {
       res.status(500).json({
         message: err.message,
