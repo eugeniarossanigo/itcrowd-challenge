@@ -9,7 +9,7 @@ const guitarController = {
       res.json({
         message: 'guitar model created',
         success: true,
-        id: guitar.id
+        id: guitar.id_guitar
       })
     } catch (err) {
         res.status(500).json({
@@ -42,11 +42,7 @@ const guitarController = {
   },
   getOne: async(req, res) => {
     try {
-      const guitars = await Guitar.findAll({
-        where: {
-          id_guitar: req.params.id
-        }
-      })
+      const guitars = await Guitar.findByPk(req.params.id)
       res.status(200).json({
         message: 'get one guitar',
         success: true,

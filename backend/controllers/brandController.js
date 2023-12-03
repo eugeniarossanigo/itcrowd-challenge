@@ -33,15 +33,11 @@ const brandController = {
   },
   getOne: async(req, res) => {
     try {
-      const brands = await Brand.findAll({
-        where: {
-          id_brand: req.params.id
-        }
-      })
+      const brand = await Brand.findByPk(req.params.id)
       res.status(200).json({
         message: 'get one brand',
         success: true,
-        response: brands[0]
+        response: brand
       })
     } catch (err) {
       res.status(500).json({
