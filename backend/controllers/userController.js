@@ -11,16 +11,17 @@ const userController = {
         return res.status(403).json({
           message: 'User already exists'
         })
-      }
-      const passHash = bcrypt.hashSync(payload.password, 10)
-      payload.password = passHash
+      } else {
+        const passHash = bcrypt.hashSync(payload.password, 10)
+        payload.password = passHash
 
-      const newUser = await User.create(payload)
-      res.status(200).json({
-        message: 'user created',
-        response: newUser,
-        success: true
-      })
+        const newUser = await User.create(payload)
+        res.status(200).json({
+          message: 'user created',
+          response: newUser,
+          success: true
+        })
+      }
     } catch (err) {
         res.status(500).json({
           message: err.message,
@@ -82,14 +83,24 @@ const userController = {
   },
   signout: async(req, res) => {
     try {
-      const user = req.user;
-      user.logged = false;
-      await user.save()
-      res.status(200).json({
-        success: true,
-        token: req.token,
-        message: 'Bye ' + user.name
+      const user = await User.findOne({
+        where:
+          { email: req.body.email }
       })
+      if (user) {
+        user.logged = false;
+        await user.save()
+        res.status(200).json({
+          success: true,
+          token: req.token,
+          message: 'Bye ' + user.name
+        })
+      } else {
+        res.status(404).json({
+          message: 'could not logout',
+          success: false
+        })
+      }
     } catch (error) {
       console.log(error)
         res.status(400).json({
