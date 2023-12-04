@@ -18,7 +18,7 @@
   align-items: center;
 }
 #main-header {
-  min-height: 20vh;
+  height: 20vh;
 }
 #main-container {
   min-height: 75vh;
