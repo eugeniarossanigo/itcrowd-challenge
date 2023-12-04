@@ -36,7 +36,13 @@ const guitarController = {
           whereClause[Op.or].push({ description: {[Op.regexp]: regexDesc}})
         }
       }
+      const page = req.query.page || 1;
+      const perPage = 4;
+      const offset = (page - 1) * perPage;
+      
       const guitars = await Guitar.findAll({
+        limit: perPage,
+        offset: offset,
         where: whereClause,
         include: [{
           model: Brand,
@@ -50,7 +56,7 @@ const guitarController = {
           response: guitars
         })
       } else {
-        res.status(404).json({
+        res.status(300).json({
           message: 'could not find any guitars',
           success: false
         })

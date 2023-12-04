@@ -2,11 +2,10 @@ import { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 dotenv.config()
 
-console.log(process.env.DB_HOST)
-const db = new Sequelize('guitarsdb', 'root', 'Eugenia.12345', {
+const db = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST || 'localhost',
   dialect: 'mysql',
-  port: '3306',
+  port: process.env.DB_PORT || '3306',
   connectionLimit: 10,
   define: {
     timestamps: false
