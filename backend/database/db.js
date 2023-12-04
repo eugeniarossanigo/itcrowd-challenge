@@ -1,15 +1,15 @@
 import { Sequelize } from 'sequelize'
-import database from '../config.js' 
+// import database from '../config.js' 
 
-const db = new Sequelize(
-  database.database,
-  database.username,
-  database.password, {
-    host: database.host,
-    dialect: 'mysql',
-    define: {
-        timestamps: false
-    }
+const db = new Sequelize({
+  host: 'localhost',
+  dialect: 'mysql',
+  define: {
+    timestamps: false
+  },
+  database: 'guitarsdb',
+  username: 'root',
+  password: 'Eugenia.12345'
 })
 
 export default db
