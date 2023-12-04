@@ -7,6 +7,7 @@ export const GuitarContext = createContext()
 export default function GuitarContextProvider(props) {
   const [products, setProducts] = useState([])
   const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const updateInput = (newInput) => {
     setInput(newInput);
@@ -29,17 +30,17 @@ export default function GuitarContextProvider(props) {
   // }
 
   useEffect(() => {
+    setLoading(true)
     getAllGuitars('?name='+ input)
       .then(res => {
-        console.log(res)
         setProducts(res)
       })
       .catch(err => console.log(err))
+      .finally(() => { setLoading(false) })
   }, [input]);
 
   return (
-    // <GuitarContext.Provider value={{products, createGuitar, deleteGuitar, updateGuitar}}>
-    <GuitarContext.Provider value={{products, input, updateInput}}>
+    <GuitarContext.Provider value={{products, loading, input, updateInput}}>
       {props.children}
     </GuitarContext.Provider>
   )
