@@ -11,6 +11,6 @@ authRouter.get('/:id', userController.getOne)
 authRouter.post('/signup', validator(signupSchema), userController.signup)
 authRouter.post('/signin', validator(signinSchema), verifyUser, verifyPass, generateToken, userController.signin)
 authRouter.post('/token', passportVerify.authenticate('jwt', {session: false}), generateToken, userController.authenticated);
-authRouter.post('/signout', passportVerify.authenticate('jwt', {session: false}), userController.signout)
+authRouter.post('/signout', userController.signout)
 
 export default authRouter
