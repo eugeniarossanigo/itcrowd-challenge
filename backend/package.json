@@ -20,11 +20,9 @@
     "joi-password-complexity": "^5.2.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
+    "nodemon": "^3.0.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "sequelize": "^6.35.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
   }
 }
