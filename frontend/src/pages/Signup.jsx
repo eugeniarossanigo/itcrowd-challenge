@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../redux/actions/auth'
+import { Link as LinkRouter } from 'react-router-dom'
 
 export default function Signup() {
   const inputs = useRef(null)
@@ -21,7 +22,6 @@ export default function Signup() {
         <h2 className='text-md font-semibold uppercase pb-2'>Register</h2>
         <fieldset className='text-xs tracking-wider uppercase flex flex-col gap-6 pb-8'>
           <label className='flex flex-col gap-1'>Name
-            {/* <input type='text' name='name' defaultValue='' placeholder='Marie' required/> */}
             <input type='text' name='name' className='input-search text-xs bg-light-gray shadow-lg rounded-md focus:outline-none focus:bg-white p-2' placeholder='Anne' required/>
           </label>
           <label className='flex flex-col gap-1'>Image
@@ -34,8 +34,13 @@ export default function Signup() {
             <input type='password' name='password' className='input-search text-xs bg-light-gray shadow-lg rounded-md focus:outline-none focus:bg-white p-2' placeholder='8 characters minimum' required/>
           </label>
         </fieldset>
-        <div className='w-1/3 bg-jasmine self-end flex justify-center items-center rounded-md hover:opacity-80'>
-          <button className='text-xs font-semibold p-2' type='submit'>SIGN UP</button>
+        <div className='w-full self-center flex flex-col items-center gap-2'>
+          <div className='w-1/3 bg-jasmine flex justify-center items-center rounded-md hover:opacity-80'>
+            <button className='text-xs font-semibold p-2' type='submit'>SIGN UP</button>
+          </div>
+          <div className='text-xs'>
+            <p>Already have an account? <LinkRouter to={'/signin'} className='underline font-semibold'>Log in</LinkRouter></p>
+          </div> 
         </div>
       </form>
     </section>

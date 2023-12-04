@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { signin } from '../redux/actions/auth'
+import { Link as LinkRouter } from 'react-router-dom'
 
 export default function Signin() {
   const inputs = useRef(null)
@@ -27,8 +28,13 @@ export default function Signin() {
             <input type='password' name='password' className='input-search text-xs bg-light-gray shadow-lg rounded-md focus:outline-none focus:bg-white p-2' placeholder='8 characters minimum' required/>
           </label>
         </fieldset>
-        <div className='w-1/3 bg-jasmine self-end flex justify-center items-center rounded-md hover:opacity-80'>
-          <button className='text-xs font-semibold p-2' type='submit'>SIGN IN</button>
+        <div className='w-full self-center flex flex-col items-center gap-2'>
+          <div className='w-1/3 bg-jasmine flex justify-center items-center rounded-md hover:opacity-80'>
+            <button className='text-xs font-semibold p-2' type='submit'>SIGN IN</button>
+          </div>
+          <div className='text-xs'>
+            <p>Do not have an account? <LinkRouter to={'/signup'} className='underline font-semibold'>Create One</LinkRouter></p>
+          </div>
         </div>
       </form>
     </section>
