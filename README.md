@@ -10,26 +10,6 @@ In one terminal you must run:
 bash run.sh
 ```
 
-### Usage with TWO scrips
-In one terminal you get into:
-```bash
-cd backend/
-```
-and run:
-```bash
-bash run.sh
-```
-
-And in another terminal you get into:
-```bash
-cd frontend/
-```
-and run:
-```bash
-bash run.sh
-```
-
-
 ## Technologies
 
 #### Backend
