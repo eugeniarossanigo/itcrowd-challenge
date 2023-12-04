@@ -64,7 +64,12 @@ const guitarController = {
   },
   getOne: async(req, res) => {
     try {
-      const guitar = await Guitar.findByPk(req.params.id)
+      const guitar = await Guitar.findByPk(req.params.id, {
+        include: [{
+          model: Brand,
+          attributes: ['name', 'logo']
+        }]
+      })
       if (guitar) {
         res.status(200).json({
           message: 'get one guitar',
