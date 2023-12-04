@@ -2,8 +2,8 @@ import { Sequelize } from 'sequelize'
 // import database from '../config.js' 
 
 const db = new Sequelize({
-  host: 'localhost',
   dialect: 'mysql',
+  host: 'localhost',
   define: {
     timestamps: false
   },
