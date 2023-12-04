@@ -9,7 +9,7 @@ export default function CardProduct({ product }) {
         <FaRegHeart className='text-moss-green hover:scale-105' />
         {/* <FaTimes onClick={() => handleDelete(product.id)}/> */}
       </div>
-      <img className='pt-4' src={product?.image} alt='guitar'/>
+      <img className='pt-4' src={product?.image2} alt='guitar'/>
       <div className='h-[10rem] flex flex-col justify-evenly px-4'>
         <h3 className='text-[.8rem]'>{product?.name}</h3>
         <div className='w-full flex justify-between items-center'>

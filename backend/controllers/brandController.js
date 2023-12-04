@@ -19,12 +19,18 @@ const brandController = {
   getAll: async(req, res) => {
     try {
       const brands = await Brand.findAll()
-      console.log(brands)
-      res.status(200).json({
-        message: 'all brands',
-        success: true,
-        response: brands
-      })
+      if (brands.length) {
+        res.status(200).json({
+          message: 'all brands',
+          success: true,
+          response: brands
+        })
+      } else {
+        res.status(404).json({
+          message: 'could not find any brands',
+          success: false
+        })
+      }
     } catch (err) {
       res.status(500).json({
         message: err.message,
@@ -34,16 +40,19 @@ const brandController = {
   },
   getOne: async(req, res) => {
     try {
-      const brands = await Brand.findAll({
-        where: {
-          id_brand: req.params.id
-        }
-      })
-      res.status(200).json({
-        message: 'get one brand',
-        success: true,
-        response: brands[0]
-      })
+      const brand = await Brand.findByPk(req.params.id)
+      if (brand) {
+        res.status(200).json({
+          message: 'get one brand',
+          success: true,
+          response: brand
+        })
+      } else {
+        res.status(404).json({
+          message: 'could not find that brand',
+          success: false
+        })
+      }
     } catch (err) {
       res.status(500).json({
         message: err.message,
