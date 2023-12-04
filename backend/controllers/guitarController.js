@@ -1,6 +1,9 @@
-// const noteModel = require('../models/noteModel');
-import Guitar from  '../models/guitarModel.js'
-import { Sequelize } from 'sequelize';
+import Guitar from '../models/guitarModel.js'
+import Brand from '../models/brandModel.js'
+import { Sequelize, Op } from 'sequelize';
+
+Brand.hasMany(Guitar, { foreignKey: 'id_brand' });
+Guitar.belongsTo(Brand, { foreignKey: 'id_brand' });
 
 const guitarController = {
   create: async(req, res) => {
@@ -20,13 +23,25 @@ const guitarController = {
   },
   getAll: async(req, res) => {
     try {
-      const regexPattern = '^' + req.query.name
-      const guitars = await Guitar.findAll({
-        where: {
-          name: {
-            [Sequelize.Op.regexp]: regexPattern.trim()
-          }
+      const regexName = req.query.name ? req.query.name.trim() : null
+      const regexDesc = req.query.description ? req.query.description.trim() : null
+      const whereClause = {};
+
+      if (regexName || regexDesc) {
+        whereClause[Op.or] = []
+        if (regexName) {
+          whereClause[Op.or].push({ name: {[Op.regexp]: regexName}})
         }
+        if (regexDesc) {
+          whereClause[Op.or].push({ description: {[Op.regexp]: regexDesc}})
+        }
+      }
+      const guitars = await Guitar.findAll({
+        where: whereClause,
+        include: [{
+          model: Brand,
+          attributes: ['name', 'logo']
+        }]
       })
       if (guitars.length) {
         res.status(200).json({
