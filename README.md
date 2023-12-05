@@ -1,6 +1,11 @@
 # itcrowd-challenge
 
-### Installation
+## Deploys
+* [Frontend](https://itcrowd-challenge-eugeniarossanigo.vercel.app/)
+
+* [Backend](https://api-guitars.onrender.com)
+
+## Installation
 In order to run the app properly you must install: 
 [Node.js](https://nodejs.org/). Then you can clone the project, get into the folder and:
 
@@ -9,6 +14,18 @@ In one terminal you must run:
 ```bash
 bash run.sh
 ```
+
+The `.env` file is in the backend repo with the name `.env.example`
+
+### API endpoints
+* GET / POST : /api/guitars
+* GET / UPDATE / DELETE: /api/guitars/{id_guitar}
+* GET / POST : /api/brands
+* GET: /api/brands/{id_brand}
+* GET: /api/auth (for users)
+
+(in POST or UPDATE guitars, data DESCRIPTION must be in this format: "Title: Name | Title2: Name2 | ...")
+
 
 ## Technologies
 
