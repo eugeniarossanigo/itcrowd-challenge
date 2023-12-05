@@ -9,7 +9,17 @@
 In order to run the app properly you must install: 
 [Node.js](https://nodejs.org/). Then you can clone the project, get into the folder and:
 
-## Usage with ONE script
+
+## Usage frontend with backend in render (config by default)
+In one terminal you must run:
+```bash
+nmp i
+```
+```bash
+nmp run dev
+```
+
+## Usage with ONE script (only locally)
 In one terminal you must run:
 ```bash
 bash run.sh
@@ -26,6 +36,12 @@ The `.env` file is in the backend repo with the name `.env.example`
 
 (in POST or UPDATE guitars, data DESCRIPTION must be in this format: "Title: Name | Title2: Name2 | ...")
 
+### USERS
+"email": "admin@gmail.com",
+"password": "Euge1234"
+
+"email": "user@gmail.com",
+"password": "User1234"
 
 ## Technologies
 
