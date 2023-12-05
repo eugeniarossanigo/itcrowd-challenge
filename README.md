@@ -13,10 +13,10 @@ In order to run the app properly you must install:
 ## Usage frontend with backend in render (config by default)
 In one terminal you must run:
 ```bash
-nmp i
+npm i
 ```
 ```bash
-nmp run dev
+npm run dev
 ```
 
 ## Usage with ONE script (only locally)
