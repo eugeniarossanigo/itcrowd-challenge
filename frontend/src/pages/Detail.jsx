@@ -1,19 +1,30 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { getOneGuitar } from '../services/apiQueries'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
 
 export default function Detail() {
   const { id } = useParams()
   const [ item, setItem ] = useState({})
+  const [ favorite, setFavorite ] = useState(false)
+
+  const handleClick = () => { setFavorite(!favorite) }
 
   useEffect(() => {
     getOneGuitar(id)
       .then(res => setItem(res))
       .catch(err => console.log(err))
   }, []);
-  console.log(item)
+
   return (
-    <section className='w-full h-full lg:w-5/6 lg:h-[38rem] 2xl:w-4/6 flex flex-col lg:flex-row shadow-lg rounded-lg py-6'>
+    <section className='relative w-full h-full lg:w-5/6 lg:h-[38rem] 2xl:w-4/6 flex flex-col lg:flex-row shadow-lg rounded-lg py-6'>
+      <div className='absolute flex justify-end p-10 z-10' onClick={handleClick}>
+        { favorite ?
+          <FaHeart className='text-2xl text-red hover:scale-105' />
+          :
+          <FaRegHeart className='text-2xl text-red hover:scale-105' />
+        }
+      </div>
       <div className='w-full lg:w-3/5 flex justify-center'>
         <img className='h-full object-cover p-6' src={item?.image1} alt='guitar'/>
       </div>
