@@ -27,7 +27,7 @@ export default function Header() {
       <section className='w-full h-1/5 tracking-wider bg-moss-green text-center text-[.6rem] text-white font-semibold pt-3'>
         <p>New incomes soon!</p>
       </section>
-      <section className='w-3/4 h-4/5 lg:h-[16vh] flex flex-col lg:flex-row justify-between items-center py-4 gap-4'>
+      <section className='w-3/5 h-4/5 lg:h-[16vh] flex flex-col lg:flex-row justify-between items-center py-4 gap-4'>
         <div className='h-[5vh] lg:h-[6vh]'>
           <img src='/logo.png' className='h-full rotate-[-12deg] py-1' alt='logo' />
         </div>
