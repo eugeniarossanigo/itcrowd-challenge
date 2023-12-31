@@ -1,6 +1,6 @@
 import { Link as LinkRouter, useNavigate } from 'react-router-dom'
 import { FaSearch } from 'react-icons/fa';
-import { RiUserAddLine, RiUserFollowLine, RiUserLine } from 'react-icons/ri';
+import { RiUserAddLine, RiUserLine } from 'react-icons/ri';
 import { useContext } from 'react';
 import { GuitarContext } from '../context/GuitarContext';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,16 +24,13 @@ export default function Header() {
 
   return (
     <header id='main-header' className='w-full flex flex-col items-center shadow-[0_20px_40px_-20px_rgba(166,171,177,1)]'>
-      <section className='w-full h-[4vh] tracking-wider bg-moss-green text-center text-[.6rem] text-white font-semibold pt-3'>
+      <section className='w-full h-1/5 tracking-wider bg-moss-green text-center text-[.6rem] text-white font-semibold pt-3'>
         <p>New incomes soon!</p>
       </section>
-      <section className='w-3/4 h-full lg:h-[16vh] flex flex-col lg:flex-row justify-between items-center py-4 gap-4'>
-        <div className='h-[4vh] lg:h-[6vh]'>
+      <section className='w-3/4 h-4/5 lg:h-[16vh] flex flex-col lg:flex-row justify-between items-center py-4 gap-4'>
+        <div className='h-[5vh] lg:h-[6vh]'>
           <img src='/logo.png' className='h-full rotate-[-12deg] py-1' alt='logo' />
         </div>
-        <nav className='uppercase text-xs tracking-[2px] flex items-center gap-6'>
-          <LinkRouter className='border-t border-b border-light-green py-1' to='/'>Home Products</LinkRouter>
-        </nav>
         <section className='flex items-center gap-4'>
           <div className='flex gap-1'>
             <label>
