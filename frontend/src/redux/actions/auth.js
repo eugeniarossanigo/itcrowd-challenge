@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const signup = createAsyncThunk('signup', async(payload) => {
   try {
-    console.log("acáaaaaa")
     const body = {...payload, id_user: uuidv4().slice(0, 18), role: false}
     const user = await axios.post(apiURL + '/api/auth/signup', body)
     .then(response => {
